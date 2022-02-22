@@ -1,7 +1,7 @@
 [package]
 name = "GitClient"
 version = "0.1.0"
-authors = ["Abha Ingle"]
+authors = ["Abha Ingle", "Nruthya Kadam", "Rutuja Talekar", "Sushruth Harsha"]
 edition = "2021"
 
 [dependencies]

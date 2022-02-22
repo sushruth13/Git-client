@@ -9,23 +9,23 @@ use std::io::{Read, Write};
 
 use super::commit::Commit;
 use super::error::GitClientError;
-use super::types::Blob;
+use super::tree::Blob;
 
 
 pub struct FileService {
     pub root_dir: PathBuf,
-    pub gitClient_dir: PathBuf,
+    pub git_client_dir: PathBuf,
     pub object_dir: PathBuf,
 }
 
 impl FileService {
     pub fn new() -> Result<FileService, GitClientError> {
         let root_dir = FileService::find_root()?;
-        let gitClient_dir = root_dir.join(".GitClient").to_path_buf();
-        let object_dir = tgit_dir.join("objects").to_path_buf();
+        let git_client_dir = root_dir.join(".GitClient").to_path_buf();
+        let object_dir = git_client_dir.join("objects").to_path_buf();
         Ok(FileService {
             root_dir,
-            gitClient_dir,
+            git_client_dir,
             object_dir,
         })
     }
@@ -33,7 +33,7 @@ impl FileService {
     fn find_root() -> Result<PathBuf, GitClientError> {
         let mut curr_dir = env::current_dir()?;
         loop {
-            if FileService::is_gitClient(&curr_dir) {
+            if FileService::is_git_client(&curr_dir) {
                 return Ok(curr_dir);
             }
             if !curr_dir.pop() {
@@ -43,7 +43,7 @@ impl FileService {
 
     }
 
-    fn is_gitClient<P>(path: P) -> bool
+    fn is_git_client<P>(path: P) -> bool
     where
         P: Sized + AsRef<Path>,
     {
@@ -55,7 +55,7 @@ impl FileService {
         let mut ref_path = String::new();
         head_file.read_to_string(&mut ref_path)?;
         let ref_path = ref_path.split_off(6);
-        Ok(self.gitClient_dir.join(ref_path))
+        Ok(self.git_client_dir.join(ref_path))
     }
 
     pub fn get_hash_from_ref(ref_path: &PathBuf) -> Option<String> {

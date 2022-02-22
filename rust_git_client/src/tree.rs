@@ -11,17 +11,17 @@ pub struct Blob {
 }
 
 pub enum Tree {
-    BlobEntry { blobName: String, hashCode: String },
+    BlobEntry { blob_Name: String, hash_Code: String },
     TreeEntry {
-        treeName: String,
-        hashCode: String,
+        tree_Name: String,
+        hash_Code: String,
         children: Vec<Tree>,
     }
 }
 
 
 impl Blob {
-    pub fn fromPath(path: &PathBuf) -> io::Result<Blob> {
+    pub fn from_path(path: &PathBuf) -> io::Result<Blob> {
         let mut bytes = Vec::new();
         let mut f = File::open(path)?;
         
