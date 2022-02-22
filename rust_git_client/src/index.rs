@@ -26,7 +26,7 @@ impl Index {
             let ln = line?;
             let blob: Vec<&str> = ln.split(' ').collect();
             if blob.len() != 2 {
-                return Err(TgitError::InvalidIndex);
+                return Err(GitClientError::IndexCorrupt);
             }
             index.update(blob[0], blob[1]);
         }
