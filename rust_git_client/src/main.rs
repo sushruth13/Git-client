@@ -2,7 +2,6 @@
 extern crate lazy_static;
 
 mod add;
-mod commit;
 mod error;
 mod file;
 mod index;
@@ -22,13 +21,19 @@ fn main() {
                     .multiple(true)
                     .required(true),
             ),
-        ).subcommand(SubCommand::with_name("commit").about("commits a change"))
+        )
         .get_matches();
 
     match m.subcommand() {
         ("init", Some(..)) => match init::init() {
             Ok(()) => println!("Repository initialized"),
             Err(..) => println!("Already initialized"),
+        },
+        ("add", Some(submatch)) => {
+            match add::add_all(&submatch.values_of("file").unwrap().collect()) {
+                Ok(()) => (),
+                Err(e) => println!("Error: {}", e),
+            }
         }
         
         _ => println!("Command not recognized."),

@@ -1,5 +1,4 @@
 use std::env;
-
 use super::error::GitClientError;
 use super::file::FileService;
 use super::index::Index;
