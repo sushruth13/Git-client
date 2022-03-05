@@ -73,7 +73,7 @@ fn main() {
             println!("Checking ssh keys");
         }
         
-        _ => println!("Command not recognized."),
+        _ => println!("Please enter valid gitclient command"),
     }
       
        
