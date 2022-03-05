@@ -1,3 +1,4 @@
+// #[allow(unused_variables, unused_assignments)]
 #[macro_use]
 extern crate lazy_static;
 
@@ -54,7 +55,7 @@ fn main() {
         },
         ("add", Some(submatch)) => {
             match add::add_all(&submatch.values_of("file").unwrap().collect()) {
-                Ok(()) => (),
+                Ok(()) => println!("file/s Added to stagging area"),
                 Err(e) => println!("Error: {}", e),
             }
         }

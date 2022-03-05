@@ -1,7 +1,7 @@
 use std::process::Command;
 
 pub fn check_auth(){
-    let check=Command::new("ssh -T git@github.com")
+    let _check=Command::new("ssh -T git@github.com")
             .output()
             .expect("failed run ssh");
     // println!("status: {}", check.status());
