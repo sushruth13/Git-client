@@ -1,3 +1,6 @@
+#![allow(dead_code)]
+#![allow(unused_must_use)]
+
 use std::io;
 use std::io::{BufRead, BufReader, Write};
 use std::collections::BTreeMap;
@@ -36,13 +39,7 @@ impl Index {
     pub fn update(&mut self, path: &str, hash: &str) {
         self.hashtree.insert(path.to_string(), hash.to_string());
     }
-
-    pub fn print(&self) {
-        for (ref hash, ref path) in self.hashtree.iter() {
-            println!("{} {}", hash, path);
-        }
-    }
-
+   
     pub fn write(&self) -> io::Result<()> {
         let mut index = File::create(&self.path)?;
         for (ref hash, ref path) in self.hashtree.iter() {

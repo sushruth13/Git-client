@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use std::io;
 use std::fs::File;
 use std::path::PathBuf;
@@ -11,10 +12,10 @@ pub struct Blob {
 }
 
 pub enum Tree {
-    BlobEntry { blob_Name: String, hash_Code: String },
+    BlobEntry { blob_name: String, hash_code: String },
     TreeEntry {
-        tree_Name: String,
-        hash_Code: String,
+        tree_name: String,
+        hash_code: String,
         children: Vec<Tree>,
     }
 }
