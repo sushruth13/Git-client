@@ -9,7 +9,7 @@ use std::io::Write;
 
 
 pub fn init() -> Result<(), GitClientError> {
-    let dir = Path::new(".GitClient");
+    let dir = Path::new("/home/naina-13/test_git/.GitClient");
 
     fs::create_dir(dir)?;
     fs::create_dir(dir.join("refs"))?;
