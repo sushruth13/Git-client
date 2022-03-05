@@ -16,7 +16,7 @@ Please note that before adding the file to the staging area, check that the fold
 5. A folder containing the blob file will be generated.
 6. Check the contents of the blob:
 
-To test commit:
-1. 
+To test commit command:
+1.
 
 The clone currently does not support private repository.
