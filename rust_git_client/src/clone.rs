@@ -1,6 +1,5 @@
    
 use git2::Repository;
-use std::env;
 pub fn clone(){
 
     let url = "https://github.com/sushruth13/Network-of-thrones.git";
