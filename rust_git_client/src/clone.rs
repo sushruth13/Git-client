@@ -4,7 +4,7 @@ pub fn clone(){
 
     let url = "https://github.com/sushruth13/Network-of-thrones.git";
     let path="test-tmp";
-    let repo = match Repository::clone(url,path) {
+    let _repo = match Repository::clone(url,path) {
         Ok(repo) => repo,
         Err(e) => panic!("failed to clone: {}", e),
     };
