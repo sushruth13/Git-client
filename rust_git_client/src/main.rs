@@ -33,6 +33,7 @@ fn main() {
         .about("To clone a repo on github.come, please pass the ssh url")
 
     )
+    .subcommand(SubCommand::with_name("commit").about("Comits the file"))
     .subcommand(
         SubCommand::with_name("add").about("Add a file").arg(
             Arg::with_name("file")
@@ -43,6 +44,7 @@ fn main() {
         )
     )
     .subcommand(SubCommand::with_name("init").about("Initializes the repository"))
+
 
     .get_matches();
     match m.subcommand() {
