@@ -11,6 +11,7 @@ mod init;
 mod tree;
 mod auth;
 mod clone;
+mod checkauth;
 use clap::{App, Arg, SubCommand};
 
 fn main() {
@@ -22,7 +23,7 @@ fn main() {
     // .allow_invalid_utf8_for_external_subcommands(true)
     .subcommand(
         SubCommand::with_name("auth")
-        .about("To use ssh keys with the git repo,please follow the instructions in https://docs.github.com/en/authentication/connecting-to-github-with-ssh/about-ssh"),
+        .about("Generates ssh keys for git authentication,please generate keys and add keys to the repo once done"),
 
     )
     .subcommand(
@@ -65,13 +66,18 @@ fn main() {
                 Err(e) => println!("Error: {}", e)
             }
         }
+        //need to pass url to the clone function
         ("clone",Some(..)) =>{
            clone::clone();
            println!("The cloning is completed");
         }
+        ("auth",Some(..))=>{
+            auth::genKeys();
+            println!("Generating ssh keys,ssh keys are saved in the default location ~/.ssh");
+        }
         ("check-auth",Some(..))=>{
-            auth::check_auth();
-            println!("Checking ssh keys");
+            checkauth::check_auth();
+            println!("Ssh keys are valid!");
         }
         
         _ => println!("Please enter valid gitclient command"),
