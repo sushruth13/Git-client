@@ -1,8 +1,8 @@
    
 use git2::Repository;
-pub fn clone(){
+pub fn clone(url: &str){
 
-    let url = "https://github.com/sushruth13/Network-of-thrones.git";
+    //let url = "https://github.com/sushruth13/Network-of-thrones.git";
     let path="test-tmp";
     let _repo = match Repository::clone(url,path) {
         Ok(repo) => repo,
