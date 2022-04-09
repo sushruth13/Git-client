@@ -118,10 +118,12 @@ fn main() {
             Ok(()) => (),
             Err(e) => println!("Error: {}", e)
         },
-        "clone" => {
-            clone::clone(&args[2]);
-            println!("The cloning is completed");
-         },
+        "clone" =>  {
+            match args.get(2){
+                Some(_x) => clone::clone(&args[2]),
+                None => println!("URL missing please add url to run clone!Currently support only exists for https and git")
+            }
+        },
         "auth" => {
             auth::genKeys();
             println!("Generating ssh keys,ssh keys are saved in the default location ~/.ssh");
@@ -132,8 +134,5 @@ fn main() {
         },
         "branch" => branch::display_time_branch(&args[2]),
         _ => println!("enter valid command"),
-    };
-    
-
-
+    }
 }
