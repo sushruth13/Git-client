@@ -14,7 +14,7 @@ Compilation instructions and commands:
 7) For adding a file to staging: **cargo run add <file-path/file-name>**
 8) For commiting a staged file: **cargo run commit**
 9) For creating a clone repository: **cargo run clone <git-repo-url>**
-10) For displaying branch information: **cargo run branch <path_of_test-tmp>**
+10) For displaying branch information: cargo run branch <path_of_test-tmp>
   
 To verify the commands:
 1) Verify git init:
