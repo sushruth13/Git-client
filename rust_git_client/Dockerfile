@@ -5,6 +5,7 @@ WORKDIR /home
 RUN apt-get update
 RUN apt-get install libssl-dev
 RUN apt install pkg-config -y
+RUN aot-get install git -y
 RUN DEBIAN_FRONTEND=noninteractive TZ=Etc/UTC apt-get -y install tzdata
 RUN apt-get install -y curl gcc
 RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
