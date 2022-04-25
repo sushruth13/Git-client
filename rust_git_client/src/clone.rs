@@ -1,5 +1,5 @@
    
-use git2::{Repository,Cred, Error, RemoteCallbacks};
+use git2::{Repository,Cred, RemoteCallbacks};
 use std::env;
 use std::path::Path;
 pub fn clone(url: &str){

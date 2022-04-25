@@ -1,3 +1,4 @@
+#![allow(dead_code, unused_variables, unused_assignments)]
 use git2::{Repository, BranchType, Branch};
 use chrono::{Utc, TimeZone, DateTime};
 use std::option::Option as Option;
@@ -6,7 +7,7 @@ use colored::*;
 struct BranchCommitTime {
     branch: String,
     last_commit_time: DateTime<Utc>,
-    Key_hash: String,
+    key_hash: String,
 }
 
 pub fn find_all_locals(repo: &Repository) -> git2::Branches {
@@ -58,10 +59,10 @@ pub fn display_time_branch(dir: &str) {
                 
                 let bct = branch_name
                     .and_then(|n| last_commit.map(|t|
-                        BranchCommitTime { branch: n, last_commit_time: t.1, Key_hash: t.0 }
+                        BranchCommitTime { branch: n, last_commit_time: t.1, key_hash: t.0 }
                     ));
 
-                    ;
+                    //;
 
                 bct
             }

@@ -1,4 +1,4 @@
-#[allow(unused_variables, unused_assignments)]
+#![allow(unused_variables, unused_assignments)]
 #[macro_use]
 extern crate lazy_static;
 
@@ -126,7 +126,7 @@ fn main() {
             }
         },
         "auth" => {
-            auth::genKeys();
+            auth::gen_keys();
             println!("Generating ssh keys,ssh keys are saved in the default location ~/.ssh");
         },
         "check-auth" => {
