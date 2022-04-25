@@ -17,6 +17,7 @@ mod auth;
 mod clone;
 mod checkauth;
 mod branch;
+mod log;
 use clap::{App, Arg, SubCommand};
 
 fn main() {
@@ -133,6 +134,14 @@ fn main() {
             println!("Ssh keys are valid!");
         },
         "branch" => branch::display_time_branch(&args[2]),
+        "log"=> {
+            match args.get(2){
+                Some(_x) => log::log(&args[2]),
+                None => println!("Missing Repo path,please add repo path")
+
+            }
+        }
         _ => println!("enter valid command"),
+
     }
 }
