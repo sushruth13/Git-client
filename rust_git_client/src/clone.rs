@@ -6,8 +6,7 @@ pub fn clone(url: &str){
     if url.starts_with("https"){
         println!("https");
     println!("Running git clone for https!");
-    //let url = "https://github.com/sushruth13/Network-of-thrones.git";
-    let path="test-tmp";
+    let path="https-folder";
     let _repo = match Repository::clone(url,path) {
         Ok(repo) => repo,
         Err(e) => panic!("failed to clone: {}", e),
