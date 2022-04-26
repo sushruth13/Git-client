@@ -18,6 +18,8 @@ mod clone;
 mod checkauth;
 mod branch;
 mod log;
+mod gitCommit;
+mod editor;
 use clap::{App, Arg, SubCommand};
 
 fn main() {
@@ -104,6 +106,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args);
     let i = args[1].as_str();
+    let path=args[2].as_str();
     
 
     match i {
@@ -140,7 +143,23 @@ fn main() {
                 None => println!("Missing Repo path,please add repo path")
 
             }
+        },
+        "gitCommit"=> {
+            match args.get(2){
+            Some(_x)=>gitCommit::commit(&args[2],&args[3]),
+            None => print!("Missing repo name in cmd, please add it")
+            }
         }
+        "editor"=>{
+            match args.get(2){
+                Some(_x)=>editor::editor(),
+                None => print!("Unable to open vim editor")
+
+            }
+        }
+        ,
+        
+        
         _ => println!("enter valid command"),
 
     }
