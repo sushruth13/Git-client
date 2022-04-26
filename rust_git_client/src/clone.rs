@@ -4,9 +4,8 @@ use std::env;
 use std::path::Path;
 pub fn clone(url: &str){
     if url.starts_with("https"){
-        println!("https");
     println!("Running git clone for https!");
-    let path="https-folder";
+    let path="Cloned-folder";
     let _repo = match Repository::clone(url,path) {
         Ok(repo) => repo,
         Err(e) => panic!("failed to clone: {}", e),
@@ -37,7 +36,7 @@ else{
     // Clone the project.
     builder.clone(
       url,
-      Path::new("ssh-folder"),
+      Path::new("Cloned-Folder"),
     ).expect("Could not clone repo");
     
 
