@@ -106,7 +106,7 @@ fn main() {
     let args: Vec<String> = env::args().collect();
     println!("{:?}", args);
     let i = args[1].as_str();
-    let path=args[2].as_str();
+    // let path=args[2].as_str();
     
 
     match i {
