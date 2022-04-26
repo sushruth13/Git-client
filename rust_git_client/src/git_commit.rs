@@ -1,4 +1,4 @@
-use git2::{Commit, ObjectType, Repository,Oid, Signature,Direction};
+use git2::{Commit, ObjectType, Repository,Oid, Signature};
 use std::path::Path;
 
 pub fn commit(path: &str, fpath:&str){

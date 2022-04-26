@@ -18,7 +18,7 @@ mod clone;
 mod checkauth;
 mod branch;
 mod log;
-mod gitCommit;
+mod git_commit;
 mod editor;
 use clap::{App, Arg, SubCommand};
 
@@ -144,9 +144,9 @@ fn main() {
 
             }
         },
-        "gitCommit"=> {
+        "git_commit"=> {
             match args.get(2){
-            Some(_x)=>gitCommit::commit(&args[2],&args[3]),
+            Some(_x)=>git_commit::commit(&args[2],&args[3]),
             None => print!("Missing repo name in cmd, please add it")
             }
         }

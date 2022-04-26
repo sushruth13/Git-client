@@ -1,5 +1,5 @@
 use std::process::Command;
-use std::path::Path;
+//use std::path::Path;
 
 pub fn editor(){
     let _start_vim=Command::new("/usr/bin/bash")
