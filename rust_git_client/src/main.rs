@@ -173,7 +173,7 @@ fn main() {
                 None => print!("Missing repo name in cmd, please add it")
             }
         }
-        "config" => match addconf::config(&args[2],&args[3]){
+        "config" => match config::config(&args[2],&args[3]){
                     Ok(()) => (),
                     Err(e) => println!("Error: {}", e)
                 }
