@@ -20,6 +20,7 @@ mod branch;
 mod log;
 mod git_commit;
 mod editor;
+mod gitinit;
 use clap::{App, Arg, SubCommand};
 
 fn main() {
@@ -165,6 +166,12 @@ fn main() {
 
             }
         },
+        "gitInit" =>{
+            match args.get(2){
+                Some(_x)=>gitinit::init(&args[2]),
+                None => print!("Missing repo name in cmd, please add it")
+            }
+        }
         
         
         _ => println!("enter valid command"),
