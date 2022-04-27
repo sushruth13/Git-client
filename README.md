@@ -64,4 +64,4 @@ To verify the commands:
     It will create a .env file containing the email id and username.
 
 12) Verify diff:
-    This feature imitates git diff --cached feature. It will give you a number of insertions, deletions and total files changed in the cloned repository.
+    This feature imitates **git diff --cached .** feature. It will give you a number of insertions, deletions and total files changed in the cloned repository.
