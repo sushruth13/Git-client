@@ -148,7 +148,7 @@ fn main() {
         },
         "git-commit"=> {
             match args.get(2){
-            Some(_x)=>git_commit::commit(&args[2],&args[3]),
+            Some(_x)=>git_commit::commit(&args[2],&args[3],&args[4]),
             None => print!("Missing repo name in cmd, please add it")
             }
         }
