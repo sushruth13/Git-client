@@ -1,3 +1,4 @@
+#![allow(unused_must_use)]
 use std::fs::File;
 use std::io::prelude::*;
 
