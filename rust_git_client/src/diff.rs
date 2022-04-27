@@ -48,21 +48,4 @@ pub fn diff_tree_to_index_fn(path:  &str){
 	
 }
 
-pub fn diff_index_to_index_fn(path:  &str){
-	let repo = Repository::open(path).expect("Couldn't open repository");
-	let path_root = Path::new(path);
-	let index = repo.index().unwrap();
-	//index.add_path(path_root);
-	let mut opts = DiffOptions::new();
-	opts.include_untracked(true);
-	//git diff --cached: It shows only those 
-	//changes of tracked files which are present in staging area.
-	let diff2 = repo.diff_tree_to_index(None, Some(&index), Some(&mut opts)).unwrap();
-	println!("lenght of deltas ---- {:}",diff2.deltas().len());
-	let stats1 = diff2.stats().unwrap();
-	println!("Number of insertions ----- {:}",stats1.insertions());
-	println!("Number of deletions ------ {:}",stats1.deletions());
-	println!("Total files changed ------ {:}",stats1.files_changed());
-	
-}
 
