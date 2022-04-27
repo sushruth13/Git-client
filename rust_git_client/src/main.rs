@@ -5,7 +5,7 @@ extern crate lazy_static;
 use std::env;
 //use std::process::exit;
 
-
+mod diff;
 mod add;
 mod commit;
 mod error;
@@ -158,9 +158,17 @@ fn main() {
             }
         }
         ,
+        "diff"=> {
+            match args.get(2){
+                Some(_x) => diff::diff_basic(&args[2]),
+                None => println!("Missing Repo path,please add repo path")
+
+            }
+        },
         
         
         _ => println!("enter valid command"),
+
 
     }
 }
