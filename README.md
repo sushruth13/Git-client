@@ -21,7 +21,7 @@ Compilation instructions and commands:
 11) For creating a clone repository: *cargo run clone <git-repo-url>*
 12) For displaying branch information: *cargo run branch <path_of_test-tmp>*
 13) For displaying the log of the git repo: *cargo run log Cloned-folder*
-14) To add and commit to remote repo: *cargo run gitCommit Cloned-folder/ <file-name> <commit-message>*
+14) To add and commit to remote repo: *cargo run git-commit Cloned-folder/ <file-name> <commit-message>*
 15) Editor to traverse and edit the files in development environment use: *cargo run editor Cloned-folder*
 16) Config to save default username and password use: *cargo run config <username> <email>*
 17) To list number of code changes use: *cargo run diff Cloned-folder*
