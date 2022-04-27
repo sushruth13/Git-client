@@ -146,7 +146,7 @@ fn main() {
 
             }
         },
-        "git_commit"=> {
+        "git-commit"=> {
             match args.get(2){
             Some(_x)=>git_commit::commit(&args[2],&args[3]),
             None => print!("Missing repo name in cmd, please add it")
@@ -167,7 +167,7 @@ fn main() {
 
             }
         },
-        "gitInit" =>{
+        "git-init" =>{
             match args.get(2){
                 Some(_x)=>gitinit::init(&args[2]),
                 None => print!("Missing repo name in cmd, please add it")
