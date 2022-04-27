@@ -160,7 +160,7 @@ fn main() {
         ,
         "diff"=> {
             match args.get(2){
-                Some(_x) => diff::diff_basic(&args[2]),
+                Some(_x) => diff::diff_tree_to_index_fn(&args[2]),
                 None => println!("Missing Repo path,please add repo path")
 
             }
