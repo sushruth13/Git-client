@@ -7,40 +7,53 @@ Version 2: authentication, clone, branch
 
 Version 3: log, add & commit to the remote repo, editor, config, diff
 
-Compilation instructions and commands:
-1) Download and extract the repository
-2) Use: *docker build -t gitclient .*
-3) Use: *docker images* and copy the gitclient image ID
-4) Use: *docker run -it [imageID]*
-5) Use: *cargo build*
-6) For authentication setup: *cargo run auth, next **cd .ssh*, add the public key to your github account
-7) For authentication verification: *cargo run check-auth*, enter "yes" on the prompt
-8) For initialising the git repository: *cargo run init*
-9) For adding a file to staging in local repo: *cargo run add <file-path/file-name>*
-10) For commiting a staged file in local repo: *cargo run commit*
-11) For creating a clone repository: *cargo run clone <git-repo-url>*
-12) For displaying branch information: *cargo run branch <path_of_test-tmp>*
-13) For displaying the log of the git repo: *cargo run log Cloned-folder*
-14) To add and commit to remote repo: *cargo run git-commit Cloned-folder/ <file-name> <commit-message>*
-15) Editor to traverse and edit the files in development environment use: *cargo run editor Cloned-folder*
-16) Config to save default username and password use: *cargo run config <username> <email>*
-17) To list number of code changes use: *cargo run diff Cloned-folder*
+### NOTE - 
 
-To verify the commands:
+We have replaced PUSH and BLAME feature which were initially listed in our project proposal with other features such as config, branchlist, log and editor tool. 
+
+**Limitations**
+
+1) Blame requires multiple users to exist in the environment and our local repo does not support that yet. For implementation on remote repo, git2 API only offers latest commit in the commit history and not previous commits, which would be essential to implement blame feature.
+
+2) There wasnt sufficient documentation on how to handle the remote callbacks in libgit2 which prevented us from implementing PUSH feature.
+
+
+## Compilation instructions and commands:
+
+1) Download and extract the repository
+2) Use: "docker build -t gitclient ."
+3) Use: "docker images" and copy the gitclient image ID
+4) Use: "docker run -it [imageID]"
+5) Use: "*cargo build"
+6) For authentication setup: "cargo run auth", next "cd .ssh", add the public key to your github account
+7) For authentication verification: "cargo run check-auth", enter "yes" on the prompt
+8) For initialising the git repository: "cargo run init"
+9) For adding a file to staging in local repo: "cargo run add <file-path/file-name>"
+10) For commiting a staged file in local repo: "cargo run commit"
+11) For creating a clone repository: "cargo run clone <git-repo-url>"
+12) For displaying branch information: "cargo run branch <path_of_test-tmp>"
+13) For displaying the log of the git repo: "cargo run log Cloned-folder"
+14) To add and commit to remote repo: "cargo run git-commit Cloned-folder/ <file-name> <commit-message>"
+15) Editor to traverse and edit the files in development environment use: "cargo run editor Cloned-folder"
+16) Config to save default username and password use: "cargo run config <username> <email>"
+17) To list number of code changes use:"cargo run diff Cloned-folder/"
+
+## To verify the commands:
+   
 1) Verify git init:
    You should be able to see.GitClient subdirectory inside the container
 
 2) Verify git add:
-   Before executing the add command, *cd .GitClient/objects* and *ll*, notice that there are no objects created yet
-   Create a new file "new.txt": *touch new.txt*
-   *cargo run add new.txt*
+   Before executing the add command, "cd .GitClient/objects" and "ll", notice that there are no objects created yet
+   Create a new file "new.txt": "touch new.txt"
+   "cargo run add new.txt"
    Got to the objects directory again, and you can see that the blob file is generated for the created file (new.txt)
 
 3) Verify commit:
    You will be prompted by the blob hashed IDs and file names on the command prompt
 
 4) Verify clone:
-   The clone currently works for open repositories only. You can pass the link to the open repository after "cargo run clone" to clone it. Please run *ll* after completion to check for the newly created repo in test-tmp.
+   The clone currently works for open repositories only. You can pass the link to the open repository after "cargo run clone" to clone it. Please run "ll" after completion to check for the newly created repo in test-tmp.
 
 5) Verify branch:
    Currently, we are storing a cloned repository in the test-tmp folder. On running "cargo run branch test-tmp", we get the names of branches created with the "git branch <new-branch-name>" command.
@@ -64,4 +77,4 @@ To verify the commands:
     It will create a .env file containing the email id and username.
 
 12) Verify diff:
-    This feature imitates **git diff --cached .** feature. It will give you a number of insertions, deletions and total files changed in the cloned repository.
+    This feature imitates "git diff --cached ." feature. It will give you a number of insertions, deletions and total files changed in the cloned repository.
